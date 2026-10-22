@@ -143,6 +143,14 @@
 		else
 			theirpower += 1
 
+	// This human uncannily hard to break.
+	if(HAS_TRAIT(target, TRAIT_MERIT_INDOMITABLE))
+		theirpower += 1
+
+	// The Prince's authority strengthens their Dominance.
+	if(owner.mind?.assigned_role == JOB_PRINCE)
+		theirpower -= 2
+
 	//if anyone else tries to dominate my conditioned servant its much harder for them but not for me
 	if(target.conditioner?.resolve())
 		theirpower += 3

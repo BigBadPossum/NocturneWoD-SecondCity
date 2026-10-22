@@ -57,3 +57,7 @@
 	name = "Wits"
 	description = "A character's ability to think on her feet and react quickly to a certain situation. It also reflects a character's general cleverness. Used in Necromancy."
 	subcategory = "Mental"
+
+// In case the character has Sheer Grit.
+/datum/st_stat/attribute/wits/update_mob(mob/living/our_mob, initial)
+	our_mob.recalculate_max_health(initial)

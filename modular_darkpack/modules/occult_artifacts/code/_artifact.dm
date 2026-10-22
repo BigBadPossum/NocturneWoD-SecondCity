@@ -110,6 +110,13 @@
 		to_chat(artifact_identifier, span_warning("You've seen some occult artifacts, trinkets, and powerful relics, but this, you've either never seen it before, or it's power can only be awakened by few..."))
 		return
 
+	// Nocturne edit: Occult identification merit
+	if(HAS_TRAIT(artifact_identifier, TRAIT_MERIT_MASTER_OCCULTIST))
+		identify(artifact_identifier)
+		to_chat(artifact_identifier, span_cult("Your occult expertise allows you to immediately identify [src]!"))
+		return
+	// Nocturne edit end
+
 	to_chat(artifact_identifier, span_cult("You might have seen this before in an occult text. You start identifying it..."))
 	if(!do_after(artifact_identifier, 1 TURNS, src))
 		return

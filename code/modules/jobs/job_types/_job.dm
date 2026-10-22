@@ -239,6 +239,11 @@
 			if(5)
 				bank_account.account_balance = rand(2000, 3000)
 				bank_account.paycheck_amount = 250
+		// Nocturne edit
+		if(HAS_TRAIT(src, TRAIT_MERIT_RESOURCES))
+			bank_account.account_balance *= 2
+			bank_account.paycheck_amount *= 1.5
+		// Nocturne edit end
 		// DARKPACK EDIT ADD END
 		add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
 		add_mob_memory(/datum/memory/key/bank_pin, remembered_id = bank_account.bank_pin) // DARKPACK EDIT ADD

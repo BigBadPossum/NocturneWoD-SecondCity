@@ -45,6 +45,14 @@
 		if((HAS_TRAIT(owner, TRAIT_GLOWING_EYES)) && (!owner.is_eyes_covered()) && (STAT_INTIMIDATION in using_stats)) // Are we intimidating a mortal with uncovered eyes?
 			theirpower -= 1
 
+	// Is this mortal uncannily difficult to bend?
+	if(HAS_TRAIT(target, TRAIT_MERIT_INDOMITABLE))
+		theirpower += 1
+
+	// The Prince's power strengthens their Presence.
+	if(owner.mind?.assigned_role == JOB_PRINCE)
+		theirpower -= 2
+
 	var/successes = SSroll.storyteller_roll_datum(owner, target, difficulty = theirpower, applic_stats = using_stats, numerical = TRUE)
 
 	//botch

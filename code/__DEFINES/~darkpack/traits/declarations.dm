@@ -188,6 +188,13 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HUGE_SIZE "huge_size"
 #define TRAIT_ILLEGAL_IDENTITY "illegal_identity" // GOVERNMENT
 #define TRAIT_MERIT_UNTAMABLE "merit_untamable"
+#define TRAIT_MERIT_INDOMITABLE "merit_indomitable"
+#define TRAIT_MERIT_RAPPORT_POSITIVE "merit_rapport_positive"
+#define TRAIT_MERIT_RAPPORT_NEGATIVE "merit_rapport_negative"
+#define TRAIT_MERIT_RESOURCES "merit_resources"
+#define TRAIT_MERIT_SHEERGRIT "merit_sheergrit"
+#define TRAIT_MERIT_PROHEALER "merit_prohealer"
+#define TRAIT_MERIT_MASTER_OCCULTIST "merit_master_occultist"
 #define TRAIT_METAMORPH "metamorph"
 #define TRAIT_MONSTROUS "monstrous"
 #define TRAIT_ORGANOVORE "organovore"

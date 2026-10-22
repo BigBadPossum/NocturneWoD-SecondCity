@@ -332,32 +332,57 @@
 /// Still returns TRUE on success and FALSE on fail
 /obj/item/stack/medical/proc/heal_carbon(mob/living/carbon/patient, mob/living/user, healed_zone)
 	var/obj/item/bodypart/affecting = patient.get_bodypart(healed_zone)
+
+	var/effective_heal_brute = heal_brute
+	var/effective_heal_burn = heal_burn
+	var/effective_stop_bleeding = stop_bleeding
+	var/effective_flesh_regeneration = flesh_regeneration
+	var/effective_sanitization = sanitization
+
+	// Nocturne edit: Pro Healer merit
+	if(HAS_TRAIT(user, TRAIT_MERIT_PROHEALER))
+		effective_heal_brute *= 2
+		effective_heal_burn *= 2
+		effective_stop_bleeding *= 2
+		effective_flesh_regeneration *= 2
+		effective_sanitization *= 2
+
 	user.visible_message(
 		span_green("[user] applies [src] on [patient]'s [affecting.plaintext_zone]."),
 		span_green("You apply [src] on [patient]'s [affecting.plaintext_zone]."),
 		visible_message_flags = ALWAYS_SHOW_SELF_MESSAGE,
 	)
+
 	var/previous_damage = affecting.get_damage()
-	if(affecting.heal_damage(heal_brute, heal_burn))
+	if(affecting.heal_damage(effective_heal_brute, effective_heal_burn))
 		patient.update_damage_overlays()
-	if(stop_bleeding)
+
+	if(effective_stop_bleeding)
 		for(var/datum/wound/wound as anything in affecting.wounds)
 			if(wound.blood_flow)
-				wound.adjust_blood_flow(-1 * stop_bleeding * (user == patient ? 0.7 : 1))
-				break // one at a time
-		affecting.adjustBleedStacks(-1 * stop_bleeding, 0)
-	if(flesh_regeneration || sanitization)
+				wound.adjust_blood_flow(-1 * effective_stop_bleeding * (user == patient ? 0.7 : 1))
+				break
+		affecting.adjustBleedStacks(-1 * effective_stop_bleeding, 0)
+
+	if(effective_flesh_regeneration || effective_sanitization)
 		for(var/datum/wound/burn/flesh/wound in affecting.wounds)
 			if(wound.can_be_ointmented_or_meshed())
-				wound.flesh_healing += flesh_regeneration
-				wound.sanitization += sanitization
-				break // one at a time
+				wound.flesh_healing += effective_flesh_regeneration
+				wound.sanitization += effective_sanitization
+				break
+
 	post_heal_effects(max(previous_damage - affecting.get_damage(), 0), patient, user)
 	return TRUE
 
 /// Healing a simple mob, just an adjust_brute_loss() call
 /obj/item/stack/medical/proc/heal_simplemob(mob/living/patient, mob/living/user)
-	patient.adjust_brute_loss(-1 * (heal_brute * patient.maxHealth / 100))
+	var/effective_heal_brute = heal_brute
+
+	if(HAS_TRAIT(user, TRAIT_MERIT_PROHEALER))
+		effective_heal_brute *= 2
+
+	patient.adjust_brute_loss(-1 * (effective_heal_brute * patient.maxHealth / 100))
+
 	user.visible_message(
 		span_green("[user] applies [src] on [patient]."),
 		span_green("You apply [src] on [patient]."),

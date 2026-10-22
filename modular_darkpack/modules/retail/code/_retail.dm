@@ -206,22 +206,37 @@
 				to_chat(usr, span_alert("Error: Product is out of stock!"))
 				return
 
-			if(product.price > 0)
-				//get the money
+			// NOCTURNE EDIT - Adds the deep rapport fame/infamy merits, letting you lower or increase the price
+			var/purchase_price = product.price
+			// Apply the 25% merit discount. -Possum
+			if(HAS_TRAIT(user, TRAIT_MERIT_RAPPORT_POSITIVE))
+				purchase_price = round(product.price * 0.75)
+			if(HAS_TRAIT(user, TRAIT_MERIT_RAPPORT_NEGATIVE))
+				purchase_price = round(product.price * 1.25)
+			// This is a sanity check. /tg/ and darkpack code does not have quirk to quirk blacklisting filters, so this line is to normalize the price if someone takes both quirks. -Possum
+			// The math is not reverisble. I.E. if you had both quirks and bought a $50 item you pay $46, with the gap growing with the cost.
+			if(HAS_TRAIT(user, TRAIT_MERIT_RAPPORT_POSITIVE) && HAS_TRAIT(user, TRAIT_MERIT_RAPPORT_NEGATIVE))
+				purchase_price = product.price
+
+			if(purchase_price > 0)
+				// Get the money
 				if(is_creditcard(held_item))
 					var/obj/item/card/credit/creditcard = held_item
 					var/datum/bank_account/used_account = creditcard.registered_account
 					if(!used_account)
 						to_chat(user, span_alert("The [creditcard] has no linked account."))
 						return
-					if(!used_account.check_pin(user, product.price, creditcard))
+
+					if(!used_account.check_pin(user, purchase_price, creditcard))
 						return
-					if(!used_account.adjust_money(-1 * product.price))
+
+					if(!used_account.adjust_money(-1 * purchase_price))
 						to_chat(user, span_alert("The transaction is declined - Insufficient funds."))
 						return
-					//used_account.process_credit_fraud(user, product.price)
+
+				// used_account.process_credit_fraud(user, purchase_price)
 				else if(istype(held_item, /obj/item/stack/dollar))
-					if(!held_item.use(product.price))
+					if(!held_item.use(purchase_price))
 						to_chat(user, span_alert("You don't have enough money in your hand."))
 						return
 				else

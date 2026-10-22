@@ -89,7 +89,8 @@
 	ph = 8
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
-	addiction_types = list(/datum/addiction/nicotine = 10)
+	// Oh no I smoke 2 cigs and now I am a shaking shivering coughing mess like I need a hit of meth. Fuck this, removing it. -Possum
+	//addiction_types = list(/datum/addiction/nicotine = 10)
 
 	//Nicotine is used as a pesticide IRL.
 /datum/reagent/drug/nicotine/on_hydroponics_apply(obj/machinery/hydroponics/mytray, mob/user)
