@@ -2,9 +2,9 @@
 // Good for larping as a mage. -Possum
 /datum/quirk/darkpack/item_quirk/familiar_summoner
 	name = "Familiar"
-	desc = "You gain the service of a supernatural familiar disguised as a dog that will obey your commands, called to you by an enchanted whistle. The familiar may be a spirit, demon, or ghost in disguise depending on your preference."
-	// Surprisingly what it costs in the book.
-	value = 1
+	desc = "You gain the service of a supernatural familiar disguised as a dog that will obey your commands, called to you by an enchanted whistle. The familiar may be a regular animal, spirit, demon, or ghost in disguise depending on your preference."
+	// Surprisingly it costs 1 in the book but I dumped it to 3 to make it an actual investment so not everyone has a dog.
+	value = 3
 	// This merit is specific to hunters. It is only for regular humans and should not be given to kinfolk, ghouls, or mages.
 	// This is so being a human/hunter has options and thus encourages people to play them otherwise the entire server is majority vamps/werewolves. -Possum
 	allowed_splats = list(SPLAT_NONE)

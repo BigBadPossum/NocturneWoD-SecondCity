@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(endowment_merit_choice, generate_merit_endowment())
 // Human only merit. Ghouls, kinfolk, and mages should not be able to take these. Being human is already painful enough, hunters need *something* so more than masochists play them.. -Possum
 /datum/quirk/darkpack/item_quirk/endowment
 	name = "Endowment"
-	desc = "You have been entrusted with supplies from a conspiracy, compact, or organization of hunters that has put its faith in you."
+	desc = "You have been entrusted with supplies from a conspiracy, compact, or organization of hunters that has put its faith in you. Be careful, your enemies finding this package might kill you over it."
 	value = 3 // Middle ground price since the merit is 1-5 in the book.
 	// Human/hunter only. Ghouls, kinfolk, mages, and supernaturals should not get the ability to take this. -Possum
 	allowed_splats = list(SPLAT_NONE)
@@ -80,10 +80,10 @@ GLOBAL_LIST_INIT(endowment_merit_choice, generate_merit_endowment())
 // Endowment kits. The box kits are so packed items and variants are easier to make. Just add any kit here as a subtype of box/hunter and it autofills into the options. -Possum
 
 /obj/item/storage/box/hunter
-	// This name is what it appears as in the character set up before it is overwritten by the init spawn. This allows players to indentify which kit is which while the box
+	// This name is what it appears as in the character set up before it is overwritten by the PopulateContents() spawn. This allows players to indentify which kit is which while the box
 	// remains generic in game to avoid meta gaming.
 	name = "box"
-	// The description remains in the box as a lore dump, hunters should destroy the box lest they risk revealing their affiliation to a conspiracy.
+	// The description remains in the box as a lore dump, hunters should destroy the box lest they risk revealing their affiliation to a compact.
 	desc = "It's just an ordinary box."
 	// The boxes are meant to blend in unless inspected.
 	icon_state = "box"
@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(endowment_merit_choice, generate_merit_endowment())
 
 // I considered making compacts 1-2 point merit cost and seperating conspiracies into 3-4 (5 point bonuses are stupidly powerful for some so they were excluded)
 // Ultimately I did not want to flood the merit lists with more ranks like I did with the talismen so I put them at 3 and middle grounded all of them.
-// Some conspiracies are excluded either due to dealing with splats that are not in the game yet, being redundant, being far too powerful/beyond the cope, not fitting the city setting, or just being really fucking lame. -Possum
+// Some conspiracies are excluded either due to dealing with splats that are not in the game yet, being redundant, being far too powerful/beyond the scope, not fitting the city setting, or just being really fucking lame. -Possum
 
 /obj/item/storage/box/hunter/ashwood_abbey
 	name = "Ashwood Abbey"
@@ -111,7 +111,7 @@ Whoever owned this box has been instructed to destroy it, lest their connection 
 /obj/item/storage/box/hunter/barret_commission
 	name = "Barret Commission"
 	desc = {"A seemingly ordinary box that has a small slit with an attached card that can be slid out and read. This one states:
-The commission expects a great deal from you. Use this stipend to gather information, make bribes, and do whatever it takes to gather information and bring it back, hopefully with your sanity and life intact.
+The commission expects a great deal from you. Use this stipend to gather information, make bribes, and do whatever it takes to further our goals and knowledge, hopefully with your sanity and life intact.
 Whoever owned this box has been instructed to destroy it, lest their connection be found and their life forfeit."}
 
 // The value given is equal to roughly what the Ashwood Abbey gets, as both compacts are rich assholes. -Possum
@@ -210,7 +210,7 @@ Whoever owned this box has been instructed to destroy it, lest their connection 
 /obj/item/storage/box/hunter/cainite_heresy
 	name = "Cainite Heresy"
 	desc = {"A seemingly ordinary box that has a small slit with an attached card that can be slid out and read. This one states:
-The creatures of Cain must be slain where ever the corruption takes root, even if it must be done in secrecy. Here are you weapons, you have your orders, see that its done.
+The creatures of Cain must be slain whereever the corruption takes root, even if it must be done in secrecy. Here are you weapons, you have your orders, see that it is done.
 Whoever owned this box has been instructed to destroy it, lest their connection be found and their life forfeit."}
 
 /obj/item/storage/box/hunter/cainite_heresy/PopulateContents()
@@ -226,7 +226,7 @@ Whoever owned this box has been instructed to destroy it, lest their connection 
 /obj/item/storage/box/hunter/cheiron_group
 	name = "Cheiron Group"
 	desc = {"A seemingly ordinary box that has a small slit with an attached card that can be slid out and read. This one states:
-The Cheiron Group is delighted in your interest in progressing our pharmecutical future. Within this package are several experimental treatments, you are instructed to use them as needed and record all side effects in your reports. Cheiron Group, for a brighter tomorrow.
+The Cheiron Group is delighted in your interest in progressing our pharmaceutical future. Within this package are several experimental treatments, you are instructed to use them as needed and record all side effects in your reports. Cheiron Group, for a brighter tomorrow.
 Whoever owned this box has been instructed to destroy it, lest their connection be found and their life forfeit."}
 
 /obj/item/storage/box/hunter/cheiron_group/PopulateContents()
