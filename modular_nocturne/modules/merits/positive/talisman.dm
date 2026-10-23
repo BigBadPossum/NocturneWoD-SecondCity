@@ -100,10 +100,12 @@
 
 // This code is a direct copy from key of alamut. I do not like how its done but it might be this way for a reason so its a 1:1 copy. -Possum
 /obj/item/occult_artifact/hunter/talisman_rank_one/grant_powers()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	update_talisman_damage_mod(H)
 
 /obj/item/occult_artifact/hunter/talisman_rank_one/ungrant_powers()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	update_talisman_damage_mod(H)
 
@@ -115,10 +117,12 @@
 	research_value = 20
 
 /obj/item/occult_artifact/hunter/talisman_rank_two/grant_powers()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	update_talisman_damage_mod(H)
 
 /obj/item/occult_artifact/hunter/talisman_rank_two/ungrant_powers()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	update_talisman_damage_mod(H)
 
@@ -130,9 +134,11 @@
 	research_value = 30
 
 /obj/item/occult_artifact/hunter/talisman_rank_three/grant_powers()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	update_talisman_damage_mod(H)
 
 /obj/item/occult_artifact/hunter/talisman_rank_three/ungrant_powers()
+	. = ..()
 	var/mob/living/carbon/human/H = owner
 	update_talisman_damage_mod(H)
