@@ -13,7 +13,9 @@ GLOBAL_LIST_INIT(endowment_merit_choice, generate_merit_endowment())
 /datum/quirk/darkpack/item_quirk/endowment
 	name = "Endowment"
 	desc = "You have been entrusted with supplies from a conspiracy, compact, or organization of hunters that has put its faith in you. Be careful, your enemies finding this package might kill you over it."
-	value = 3 // Middle ground price since the merit is 1-5 in the book.
+	// The book makes them 1-5 and the 5 point merits for some factions in tabletop is stuff like unlimited ammo for your chosen weapon or the ability to punch a demon and instantly unpossesse them.
+	// As this is not the tabletop, I middle grounded it at 3 and balanced much of the gear around this point. -Possum
+	value = 3
 	// Human/hunter only. Ghouls, kinfolk, mages, and supernaturals should not get the ability to take this. -Possum
 	allowed_splats = list(SPLAT_NONE)
 	icon = FA_ICON_RUPEE
@@ -131,11 +133,11 @@ Whoever owned this box has been instructed to destroy it, lest their connection 
 /obj/item/storage/box/hunter/bear_lodge/PopulateContents()
 	name = "box"
 	new /obj/item/gun/ballistic/shotgun/vampire (src)
-	new /obj/item/ammo_box/darkpack/c12g/silver (src)
+	new /obj/item/ammo_box/darkpack/c12g/incap (src)
 	new /obj/item/knife/hunting (src)
 	new /obj/item/restraints/handcuffs (src)
-	new /obj/item/restraints/legcuffs/bola/tactical (src)
-	new /obj/item/restraints/legcuffs/bola/tactical (src)
+	new /obj/item/restraints/legcuffs/bola (src)
+	new /obj/item/restraints/legcuffs/bola (src)
 
 
 /obj/item/storage/box/hunter/illum_brotherhood
@@ -250,15 +252,13 @@ Whoever owned this box has been instructed to destroy it, lest their connection 
 
 /obj/item/storage/box/hunter/malleus_maleficarum/PopulateContents()
 	name = "box"
-	new /obj/item/ammo_box/darkpack/c12g/silver (src)
-	new /obj/item/ammo_box/darkpack/c12g/buck/incendiary (src)
-	new /obj/item/ammo_box/darkpack/c44/silver (src)
-	new /obj/item/ammo_box/darkpack/c45acp/silver (src)
-	new /obj/item/ammo_box/darkpack/c556/incendiary (src)
-	new /obj/item/ammo_box/darkpack/c762x51mm/incendiary (src)
+	new /obj/item/knife/combat/bone (src)
+	new /obj/item/vampire_stake (src)
+	new /obj/item/storage/fancy/candle_box (src)
+	new /obj/item/lighter (src)
+	new /obj/item/reagent_containers/cup/glass/bottle/holywater (src)
 	new /obj/item/book/bible (src)
 	new /obj/item/clothing/neck/vampire/prayerbeads (src)
-
 
 
 /obj/item/storage/box/hunter/vascu
