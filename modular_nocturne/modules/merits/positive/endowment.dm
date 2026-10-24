@@ -247,7 +247,7 @@ Whoever owned this box has been instructed to destroy it, lest their connection 
 /obj/item/storage/box/hunter/malleus_maleficarum
 	name = "Malleus Maleficarum"
 	desc = {"A seemingly ordinary box that has a small slit with an attached card that can be slid out and read. This one states:
-Faith is the foundation of god's will. Deny the witch, deny the demon, deny the monsters of the night. We have supplied you with munitions, but your weapons you will need to find on your own. As god wills.
+Faith is the foundation of god's will. Deny the witch, deny the demon, deny the monsters of the night. Here are the tools needed to peform your god given duties. Deus Veult.
 Whoever owned this box has been instructed to destroy it, lest their connection be found and their life forfeit."}
 
 /obj/item/storage/box/hunter/malleus_maleficarum/PopulateContents()
